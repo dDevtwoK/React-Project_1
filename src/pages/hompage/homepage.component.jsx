@@ -3,7 +3,7 @@ import './homepage.styled.scss';
 import Directory from '../../components/directory/directory.component';
 import MenuItem from '../../components/menu-item/menu-item.component';
 
-const homepage = props => {
+const HomePage = () => {
   return (
     <div className='homepage'>
       <Directory />
@@ -11,4 +11,4 @@ const homepage = props => {
   );
 };
 
-export default homepage;
+export default HomePage;
