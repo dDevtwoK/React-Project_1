@@ -2,3 +2,10 @@ body {
   font-family: 'Antonio', sans-serif;
   padding: 20px 40px;
 }
+* {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
