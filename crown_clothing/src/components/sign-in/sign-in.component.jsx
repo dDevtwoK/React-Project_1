@@ -26,11 +26,9 @@ class SignIn extends React.Component {
   };
   changedHandler = e => {
     const { value, name } = e.target;
-    console.log(value, name);
     this.setState({ [name]: value });
   };
   render() {
-    console.log(this.state);
     return (
       <div className='sign-in'>
         <h1>I already have an account</h1>
