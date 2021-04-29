@@ -27,7 +27,17 @@
   }
 
   .quantity {
-    padding-left: 20px;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .arrow {
+    cursor: pointer;
+    &-left {
+      padding-right: 10px;
+    }
+    &-right {
+      padding-left: 10px;
+    }
   }
 
   .remove-button {
