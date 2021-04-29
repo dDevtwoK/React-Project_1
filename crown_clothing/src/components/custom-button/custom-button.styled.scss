@@ -8,10 +8,12 @@
   background-color: black;
   color: white;
   text-transform: uppercase;
-  font-family: 'Open Sans Condensed';
-  font-weight: bolder;
+  font-weight: 400;
   border: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  font-family: 'Antonio', sans-serif;
 
   &:hover {
     background-color: white;
@@ -22,6 +24,18 @@
     background-color: #4285f4;
     &:hover {
       background-color: #357ae8;
+      border: none;
+    }
+  }
+
+  &.inverted {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+
+    &:hover {
+      background-color: black;
+      color: white;
       border: none;
     }
   }
