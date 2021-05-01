@@ -1,18 +1,17 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
-
-import './cart-item.styled.scss';
+import { CartDetailsStyled, CartItemStyled } from './cart-item.styled';
 
 const CartItem = ({ name, price, imageUrl, quantity }) => (
-  <div className='cart-item'>
+  <CartItemStyled>
     <img src={imageUrl} alt="item 's image" />
-    <div className='item-details'>
+    <CartDetailsStyled>
       <span>{name}</span>
       <span>
         {quantity} × ${price}
       </span>
-    </div>
-  </div>
+    </CartDetailsStyled>
+  </CartItemStyled>
 );
 
 export default CartItem;
