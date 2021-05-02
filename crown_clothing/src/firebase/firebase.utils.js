@@ -60,15 +60,15 @@ export const convertCollectionsSnapshotToMap = collections => {
 
     return {
       routeName: encodeURI(title.toLowerCase()),
-      id: doc.id,
-      items,
       title,
+      items,
+      id: doc.id,
     };
   });
 
-  return transformedCollection.reduce((accumulator, collection) => {
-    accumulator[collection.title.toLowerCase()] = collection;
-    return accumulator;
+  return transformedCollection.reduce((acc, obj) => {
+    acc[obj.title.toLowerCase()] = obj;
+    return acc;
   }, {});
 };
 

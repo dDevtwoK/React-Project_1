@@ -8,6 +8,11 @@ export const CollectionPreviewContainer = styled.div`
 export const TitleStyled = styled.h1`
   font-size: 28px;
   margin-bottom: 25px;
+  transition: hover 0.3s ease-in;
+  &:hover {
+    color: #999;
+    cursor: pointer;
+  }
 `;
 export const PreviewStyled = styled.div`
   display: flex;
