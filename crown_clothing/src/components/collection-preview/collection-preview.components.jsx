@@ -10,7 +10,6 @@ import {
 } from './collection-preview.styled';
 
 const CollectionPreview = ({ title, items, history, match, routeName }) => {
-  console.log(routeName);
   return (
     <CollectionPreviewContainer>
       <TitleStyled onClick={() => history.push(`${match.path}/${routeName}`)}>

@@ -18,27 +18,27 @@ import { currentUserSelector } from './components/redux/user/user.selector';
 class App extends React.Component {
   unsubscribeFromAuth = null;
   componentDidMount() {
-    console.log('DidMount');
     const { setCurrentUser } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      console.log(auth);
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot => {
+        userRef.get().then(snapshot => {
           setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data(),
+            id: snapshot.id,
+            ...snapshot.data(),
           });
         });
       } else setCurrentUser(userAuth);
     });
   }
   componentWillUnmount() {
-    console.log('WillMount');
     this.unsubscribeFromAuth();
   }
 
   render() {
+    console.log('render');
     return (
       <div>
         <Header />
