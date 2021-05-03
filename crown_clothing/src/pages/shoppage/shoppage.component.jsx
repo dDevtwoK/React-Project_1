@@ -3,47 +3,30 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import CollectionOverview from '../../components/collections-overview/collections-overview.component';
-import CollectionPage from '../collection/collection.component';
-
-import WithSpinner from '../../components/with-spinner/with-spinner.component';
-
 import { createStructuredSelector } from 'reselect';
 import { fetchingCollectionSelector } from '../../components/redux/shop/shop.selector';
 import { fetchCollectionStartAsync } from '../../components/redux/shop/shop.actions';
-
-const CollectionOverviewWithSpinner = WithSpinner(CollectionOverview);
-const CollectionPageWithSpinner = WithSpinner(CollectionPage);
+import CollectionOverviewContainer from '../../components/collections-overview/collection-overview.container';
+import CollectionContainer from '../collection/collection.container';
 
 class ShopPage extends React.Component {
   componentDidMount() {
     const { collectionMap } = this.props;
     collectionMap();
   }
-  
 
   render() {
-    const { match, isCollectionFetching } = this.props;
+    const { match } = this.props;
     return (
       <div className='shop-page'>
         <Route
           exact
           path={`${match.path}`}
-          render={props => (
-            <CollectionOverviewWithSpinner
-              isFetching={isCollectionFetching}
-              {...props}
-            />
-          )}
+          component={CollectionOverviewContainer}
         />
         <Route
           path={`${match.path}/:collectionId`}
-          render={props => (
-            <CollectionPageWithSpinner
-              isFetching={isCollectionFetching}
-              {...props}
-            />
-          )}
+          component={CollectionContainer}
         />
       </div>
     );
