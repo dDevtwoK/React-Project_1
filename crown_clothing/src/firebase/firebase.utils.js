@@ -12,14 +12,21 @@ const config = {
   measurementId: 'G-3W5D06P99H',
 };
 
+export const getCurrentUser = () => {
+  return new Promise(resolve => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth);
+    });
+  });
+};
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
-  console.log(userRef);
 
   const userSnapshot = await userRef.get();
-  console.log(userSnapshot);
 
   if (!userSnapshot.exists) {
     const { displayName, email } = userAuth;
@@ -75,8 +82,8 @@ export const convertCollectionsSnapshotToMap = collections => {
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;
