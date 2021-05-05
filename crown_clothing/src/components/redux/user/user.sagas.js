@@ -36,6 +36,7 @@ function* googleSignInAsync() {
 function* emailSignInAsync({ payload: { email, password } }) {
   try {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
+
     yield getSnapshotFromUser(user);
   } catch (error) {
     yield put(signInFailure(error.message));
@@ -45,7 +46,6 @@ function* emailSignInAsync({ payload: { email, password } }) {
 function* isAuthenticatedUser() {
   try {
     const userAuth = yield getCurrentUser();
-    console.log(userAuth);
     if (!userAuth) return;
     yield getSnapshotFromUser(userAuth);
   } catch (error) {

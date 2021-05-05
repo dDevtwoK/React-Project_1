@@ -15,6 +15,7 @@ const config = {
 export const getCurrentUser = () => {
   return new Promise(resolve => {
     const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      console.log(userAuth);
       unsubscribe();
       resolve(userAuth);
     });
